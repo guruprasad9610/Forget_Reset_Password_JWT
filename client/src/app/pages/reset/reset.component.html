@@ -1,0 +1,32 @@
+<div class="lg:w-4/12 mt-5 px-4 py-3 shadow-lg mx-auto">
+
+    <h3 class="text-2xl text-center font-semibold py-1">Reset Password</h3>
+
+    <form [formGroup]="resetForm" class="flex flex-col">
+
+        <span class="mb-2">Please use Strong Password</span>
+        
+        <div class="flex flex-col mt-2 mb-1">
+            <input formControlName="password" class="p-1 border border-gray-300 rounded" type="password" placeholder="Create Password">
+            <span *ngIf="resetForm.hasError('required', 'password') && resetForm.controls['password'].dirty"
+                class="text-red-500">*Password is required
+            </span>
+        </div>
+
+        <div class="flex flex-col mt-2 mb-1">
+            <input formControlName="confirmPassword" class="p-1 border border-gray-300 rounded" type="password" placeholder="Confirm Password">
+            <span *ngIf="resetForm.hasError('required', 'confirmPassword') && resetForm.controls['confirmPassword'].dirty"
+                class="text-red-500">*Confirm Password is required
+            </span>
+            <span *ngIf="resetForm.hasError('confirmPasswordValidator', 'confirmPassword')"
+                class="text-red-500">*Password didn't matched!
+            </span>
+        </div>
+
+        <button (click)="reset()" [disabled]="resetForm. invalid" [class.disabled]="resetForm.invalid"
+            class="bg-indigo-500 w-1/4 mt-3 p-2 rounded-md text-gray-50">Submit
+        </button>
+
+    </form>
+
+</div>
